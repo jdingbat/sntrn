@@ -1,30 +1,25 @@
-<h1>
-    <p align="center">
-        SNTRN
-        <br>
-        <small>
-            <i>
-                A little something for your media collection.
-            </i>
-        </small>
-    </p>
-</h1>
+# sntrn
 
-### What is this?
+[![Go Reference](https://pkg.go.dev/badge/github.com/jdingbat/sntrn.svg)](https://pkg.go.dev/github.com/jdingbat/sntrn)
+[![Go Report Card](https://goreportcard.com/badge/github.com/jdingbat/sntrn)](https://goreportcard.com/report/github.com/jdingbat/sntrn)
 
-This is a go client library to interact with the website senturion.to
+cli is a simple, fast, and fun package for building command line apps in Go. The
+goal is to enable developers to write fast and distributable command line
+applications in an expressive way.
 
-### Installation:
+## Installation
 
-pretty standard go stuff:
+Pretty standard go stuff:
 
 ```go
 go get github.com/jdingbat/sntrn
 ```
 
-A pretty standard example is included in the `examples` directory as a "get started" guide.
+## Documentation
 
-### How can I help?
+More documentation is available in [`./docs`](./docs) or the hosted
+documentation site at <https://cli.urfave.org>.
 
-If you know anything more about their unofficial API that could be useful then feel free to
-open a pull request.
+## License
+
+See [`LICENSE`](./LICENSE)
