@@ -6,7 +6,7 @@ import (
 	"os"
 
 	"github.com/charmbracelet/log"
-	"github.com/misterbianco/sntrn/sntrn"
+	"github.com/jdingbat/sntrn"
 )
 
 var (
