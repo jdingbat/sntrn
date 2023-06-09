@@ -16,7 +16,7 @@ var password string
 func init() {
 	err := godotenv.Load("../.env")
 	if err != nil {
-		log.Fatalf("Some error occured. Err: %s", err)
+		log.Fatalf("Some error occurred. Err: %s", err)
 	}
 
 	username = os.Getenv("USERNAME")
