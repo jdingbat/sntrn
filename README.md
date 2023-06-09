@@ -11,9 +11,7 @@ applications in an expressive way.
 
 Pretty standard go stuff:
 
-```go
-go get github.com/jdingbat/sntrn
-```
+`go get github.com/jdingbat/sntrn`
 
 ## Documentation
 
