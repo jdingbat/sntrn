@@ -2,9 +2,11 @@ package sntrn
 
 import (
 	"context"
+	"log"
 	"net/http"
 	"net/url"
 	"strconv"
+	"sync"
 	"time"
 )
 
@@ -22,7 +24,7 @@ func (c *Client) getSeriesLinks(ctx context.Context, sr SearchResponse) ([]Links
 		return nil, err
 	}
 
-	results := []LinksResponse{}
+	requests := []*http.Request{}
 
 	for season, episodes := range seasons {
 		for _, episode := range episodes {
@@ -38,17 +40,39 @@ func (c *Client) getSeriesLinks(ctx context.Context, sr SearchResponse) ([]Links
 
 			req, err := c.newRequest("GET", u, nil)
 			if err != nil {
-				return nil, err
+				continue
 			}
+
+			requests = append(requests, req)
+		}
+	}
+
+	results := []LinksResponse{}
+	ch := make(chan LinksResponse)
+
+	var wg sync.WaitGroup
+
+	for _, req := range requests {
+		wg.Add(1)
+		go func(req *http.Request) {
+			defer wg.Done()
 
 			var dr LinksResponse
 			_, err = c.do(ctx, req, &dr)
 			if err != nil {
-				return nil, err
+				log.Fatal(err)
 			}
+			ch <- dr
+		}(req)
+	}
 
-			results = append(results, dr)
-		}
+	go func() {
+		wg.Wait()
+		close(ch)
+	}()
+
+	for res := range ch {
+		results = append(results, res)
 	}
 
 	return results, nil
@@ -76,7 +100,7 @@ func (c *Client) getSeasons(ctx context.Context, sr SearchResponse) (map[int][]s
 		var ep []EpisodeData
 		resp, err := c.do(ctx, req, &ep)
 		if err != nil {
-			return nil, err
+			break // Occassionally this is because the servers have a season 0
 		}
 
 		if resp.StatusCode == http.StatusInternalServerError {

@@ -7,6 +7,7 @@ import (
 
 	"github.com/charmbracelet/log"
 	"github.com/jdingbat/sntrn"
+	"github.com/joho/godotenv"
 )
 
 var (
@@ -15,6 +16,11 @@ var (
 )
 
 func init() {
+	err := godotenv.Load(".env")
+	if err != nil {
+		log.Fatalf("Some error occurred. Err: %s", err)
+	}
+
 	username = os.Getenv("USERNAME")
 	password = os.Getenv("PASSWORD")
 }
@@ -28,14 +34,14 @@ func main() {
 		log.Fatal(err)
 	}
 
-	sr, err := client.Search(context.TODO(), "rick") // IE rick and morty
+	sr, err := client.Search(context.TODO(), "family") // IE rick and morty
 	if err != nil {
 		log.Fatal(err)
 	}
 
 	var dl *sntrn.SearchResponse
 	for _, s := range sr {
-		if s.Id == "705" {
+		if s.Id == "1459" {
 			dl = &s
 			break
 		}
@@ -44,7 +50,9 @@ func main() {
 		log.Fatal("Failed to find media with given id")
 	}
 
-	lr, err := client.Links(context.TODO(), *dl)
+	fmt.Println(dl)
+
+	lr, err := client.Links(context.TODO(), sntrn.SearchResponse{Id: "1459"})
 	if err != nil {
 		log.Fatal(err)
 	}
