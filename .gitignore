@@ -21,4 +21,5 @@
 go.work
 
 .env
-.rtx.toml
+.vscode
+.devbox

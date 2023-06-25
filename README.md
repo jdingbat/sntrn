@@ -1,11 +1,10 @@
 # sntrn
 
+[![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
 [![Go Reference](https://pkg.go.dev/badge/github.com/jdingbat/sntrn.svg)](https://pkg.go.dev/github.com/jdingbat/sntrn)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jdingbat/sntrn)](https://goreportcard.com/report/github.com/jdingbat/sntrn)
 
-cli is a simple, fast, and fun package for building command line apps in Go. The
-goal is to enable developers to write fast and distributable command line
-applications in an expressive way.
+An easy to use library to interact with the unofficial api of senturion.
 
 ## Installation
 
@@ -13,10 +12,9 @@ Pretty standard go stuff:
 
 `go get github.com/jdingbat/sntrn`
 
-## Documentation
+## Examples
 
-More documentation is available in [`./docs`](./docs) or the hosted
-documentation site at <https://cli.urfave.org>.
+Examples are available in [`./examples`](./examples)
 
 ## License
 
