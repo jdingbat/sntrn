@@ -1,6 +1,5 @@
 # sntrn
 
-[![Built with Devbox](https://jetpack.io/img/devbox/shield_galaxy.svg)](https://jetpack.io/devbox/docs/contributor-quickstart/)
 [![Go Reference](https://pkg.go.dev/badge/github.com/jdingbat/sntrn.svg)](https://pkg.go.dev/github.com/jdingbat/sntrn)
 [![Go Report Card](https://goreportcard.com/badge/github.com/jdingbat/sntrn)](https://goreportcard.com/report/github.com/jdingbat/sntrn)
 
