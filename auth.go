@@ -16,7 +16,7 @@ func (c *Client) Login(ctx context.Context, username, password string) error {
 	data := url.Values{
 		"username": {username},
 		"password": {password},
-		"remember": {"1"},
+		"remember": {"0"},
 	}
 
 	u := c.host.ResolveReference(&url.URL{Path: LOGIN_PATH})
